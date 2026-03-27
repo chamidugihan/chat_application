@@ -72,7 +72,7 @@ export const login = async (req, res) => {
       _id: user._id,
       fullName: user.fullName,
       username: user.username,
-      ProfilePic: user.ProfilePic,
+      profilePic: user.profilePic,
     });
   } catch (error) {
     console.log("Error in LOGIN controller", error);
@@ -87,7 +87,7 @@ export const logout = (req, res) => {
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({
       message: "Logout successful",
-    })
+    });
   } catch (error) {
     console.log("Error in LOGUT controller", error);
     res.status(500).json({
