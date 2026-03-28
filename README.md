@@ -200,13 +200,11 @@ npm start
 ---
 
 ## 📸 Screenshots
-
-> Add screenshots of your app here
 <img width="1877" height="1042" alt="Image" src="https://github.com/user-attachments/assets/633f8060-6c52-475c-804f-95db867e228e" />
 <img width="1894" height="1035" alt="Image" src="https://github.com/user-attachments/assets/dd04b03b-786c-4351-a027-563347a9efb0" />
 <img width="1895" height="1056" alt="Image" src="https://github.com/user-attachments/assets/d21f7649-91c7-41a8-b5df-321f9b83b241" />
 <img width="1905" height="1052" alt="Image" src="https://github.com/user-attachments/assets/59270762-abb2-4329-a03c-1ffeed3637fb" />
----
+
 
 ## 🛠️ Environment Variables
 
