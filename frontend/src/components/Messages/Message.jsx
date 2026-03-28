@@ -14,10 +14,8 @@ function Message({ message }) {
     : selectedConversation.profilePic ||
       "https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png";
   const bubbleBgColor = fromMe ? "bg-blue-500" : "bg-gray-500";
-  console.log("profilePic:", profilePic);
-  console.log("authUser:", authUser);
-  console.log("selectedConversation:", selectedConversation);
-  console.log("authUser full:", JSON.stringify(authUser));
+
+  const shakeClass = message.shouldShake ? "shake" : "";
   return (
     <div className={`${chatClassName}`}>
       <div className="chat-image avatar">
@@ -26,7 +24,7 @@ function Message({ message }) {
         </div>
       </div>
       <div
-        className={`chat-bubble text-white pb-2 bg-blue-500  ${bubbleBgColor}`}
+        className={`chat-bubble text-white pb-2 bg-blue-500  ${bubbleBgColor} ${shakeClass}`}
       >
         {message.message}
       </div>

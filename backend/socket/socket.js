@@ -1,0 +1,40 @@
+import { Server } from "socket.io";
+import hppt from "http";
+import express from "express";
+
+
+const app = express();
+
+const server = hppt.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+  },
+});
+
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
+//create a map to store the socket id of each user
+const userSocketMap = {};
+
+io.on("connection", (socket) => {
+  console.log(`User connected: ${socket.id}`);
+
+  //sorket.handshake.query is used to get the query parameters from the client
+  const userId = socket.handshake.query.userId;
+  if (userId != "undefined") {
+    userSocketMap[userId] = socket.id;
+  }
+  //io.emit() is sent to all connected clients, including the sender itself.
+  io.emit("getOnlineUsers", Object.keys(userSocketMap));
+  socket.on("disconnect", () => {
+    console.log(`User disconnected: ${socket.id}`);
+    delete userSocketMap[userId];
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
+  });
+});
+
+export { app, io, server };
